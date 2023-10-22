@@ -1,60 +1,126 @@
 const canvas = document.getElementById('puzzle');
 const ctx = canvas.getContext('2d');
 
-var x = 50; // Posição inicial x do círculo
-var y = 50; // Posição inicial y do círculo
-var radius = 20; // Raio do círculo
-var speedX = 2; // Velocidade no eixo X
-var speedY = 2; // Velocidade no eixo Y
-var scale = 1; // Fator de escala
-var angle = 0; // Ângulo de rotação
 
-function drawCircle() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpa o canvas
+        // Círculo
+        var circleX = 50;
+        var circleY = 50;
+        var circleRadius = 20;
+        var circleSpeedX = 2;
+        var circleSpeedY = 2;
+        var circleScale = 1;
+        var circleAngle = 0;
 
-    // Aplica transformações
-    ctx.save();
-    ctx.translate(x, y); // Move o ponto de origem
-    ctx.rotate(angle); // Rotaciona
-    ctx.scale(scale, scale); // Escala
-    ctx.transform(1, 0.5, -0.5, 1, 0, 0); // Transformação personalizada
+        // Retângulo
+        var rectX = 100;
+        var rectY = 150;
+        var rectWidth = 30;
+        var rectHeight = 60;
+        var rectSpeedX = 1;
+        var rectSpeedY = -1;
+        var rectScale = 1;
+        var rectAngle = 0;
 
-    // Define um clipping path (recorte)
-    ctx.beginPath();
-    ctx.arc(0, 0, radius, 0, Math.PI * 2);
-    ctx.clip();
+        // Triângulo
+        var triangleX = 200;
+        var triangleY = 300;
+        var triangleSize = 40;
+        var triangleSpeedX = -2;
+        var triangleSpeedY = 1;
+        var triangleScale = 1;
+        var triangleAngle = 0;
 
-    // Desenhe o círculo
-    ctx.beginPath();
-    ctx.arc(0, 0, radius, 0, Math.PI * 2);
-    ctx.fillStyle = "blue";
-    ctx.fill();
-    ctx.closePath();
+        function drawShapes() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Restaura o contexto para remover as transformações e o clipping path
-    ctx.restore();
+            // Desenhar o círculo
+            ctx.save();
+            ctx.translate(circleX, circleY);
+            ctx.rotate(circleAngle);
+            ctx.scale(circleScale, circleScale);
+            ctx.beginPath();
+            ctx.arc(0, 0, circleRadius, 0, Math.PI * 2);
+            ctx.fillStyle = "blue";
+            ctx.fill();
+            ctx.closePath();
+            ctx.restore();
 
-    // Mova o círculo
-    x += speedX; // Atualiza a posição no eixo X
-    y += speedY; // Atualiza a posição no eixo Y
+            // Mover o círculo
+            circleX += circleSpeedX;
+            circleY += circleSpeedY;
 
-    // Verifique colisão com as bordas do canvas
-    if (x - radius < 0 || x + radius > canvas.width) {
-        speedX = -speedX; // Inverta a direção no eixo X ao colidir com as bordas
-    }
+            // Verificar colisão com as bordas
+            if (circleX - circleRadius < 0 || circleX + circleRadius > canvas.width) {
+                circleSpeedX = -circleSpeedX;
+            }
+            if (circleY - circleRadius < 0 || circleY + circleRadius > canvas.height) {
+                circleSpeedY = -circleSpeedY;
+            }
 
-    if (y - radius < 0 || y + radius > canvas.height) {
-        speedY = -speedY; // Inverta a direção no eixo Y ao colidir com as bordas
-    }
+            // Desenhar o retângulo
+            ctx.save();
+            ctx.translate(rectX, rectY);
+            ctx.rotate(rectAngle);
+            ctx.scale(rectScale, rectScale);
+            ctx.beginPath();
+            ctx.rect(0, 0, rectWidth, rectHeight);
+            ctx.fillStyle = "green";
+            ctx.fill();
+            ctx.closePath();
+            ctx.restore();
 
-    // Atualiza as transformações
-    scale += 0.01; // Aumenta a escala ao longo do tempo
-    angle += 0.01; // Incrementa o ângulo de rotação
-}
+            // Mover o retângulo
+            rectX += rectSpeedX;
+            rectY += rectSpeedY;
 
-function animate() {
-    requestAnimationFrame(animate); // Cria um loop de animação
-    drawCircle(); // Chama a função para desenhar o círculo
-}
+            // Verificar colisão com as bordas
+            if (rectX < 0 || rectX + rectWidth > canvas.width) {
+                rectSpeedX = -rectSpeedX;
+            }
+            if (rectY < 0 || rectY + rectHeight > canvas.height) {
+                rectSpeedY = -rectSpeedY;
+            }
 
-animate(); // Inicia a animação
+            // Desenhar o triângulo
+            ctx.save();
+            ctx.translate(triangleX, triangleY);
+            ctx.rotate(triangleAngle);
+            ctx.scale(triangleScale, triangleScale);
+            ctx.beginPath();
+            ctx.moveTo(0, -triangleSize);
+            ctx.lineTo(triangleSize, triangleSize);
+            ctx.lineTo(-triangleSize, triangleSize);
+            ctx.closePath();
+            ctx.fillStyle = "red";
+            ctx.fill();
+            ctx.restore();
+
+            // Mover o triângulo
+            triangleX += triangleSpeedX;
+            triangleY += triangleSpeedY;
+
+            // Verificar colisão com as bordas
+            if (triangleX < 0 || triangleX > canvas.width) {
+                triangleSpeedX = -triangleSpeedX;
+            }
+            if (triangleY < 0 || triangleY > canvas.height) {
+                triangleSpeedY = -triangleSpeedY;
+            }
+
+            // Quadrado com clipping path
+            ctx.save();
+            ctx.beginPath();
+            ctx.rect(400, 100, 100, 100); // Desenha um quadrado
+            ctx.arc(450, 150, 30, 0, Math.PI * 2); // Desenha um círculo dentro do quadrado
+            ctx.clip(); // Define um clipping path com o quadrado
+            ctx.fillStyle = "orange";
+            ctx.fillRect(400, 100, 100, 100); // Preenche o retângulo
+            ctx.restore(); // Remove o clipping path
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            drawShapes();
+        }
+
+        animate();
