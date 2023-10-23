@@ -2,27 +2,27 @@ const canvas = document.getElementById('puzzle');
 const ctx = canvas.getContext('2d');
 
   // Círculo
-  var circleX = 50;
-  var circleY = 50;
-  var circleRadius = 20;
-  var circleSpeedX = 2;
-  var circleSpeedY = 2;
-  var circleScale = 1;
-  var circleAngle = 0;
+  var circuloX = 50;
+  var circuloY = 50;
+  var circuloRadius = 20;
+  var circuloVX = 2;
+  var circuloVY = 2;
+  var circuloScale = 1;
+  var circuloAngle = 0;
 
   // Retângulo
-  var rectX = 100;
-  var rectY = 150;
-  var rectWidth = 30;
-  var rectHeight = 60;
-  var rectSpeedX = 1;
-  var rectSpeedY = -1;
-  var rectScale = 1;
-  var rectAngle = 0;
+  var retX = 100;
+  var retY = 150;
+  var retWidth = 30;
+  var retHeight = 60;
+  var retVX = 1;
+  var retVY = -1;
+  var retScale = 1;
+  var retAngle = 0;
 
   // Triângulo
-  var triangleX = 200;
-  var triangleY = 300;
+  var trianguloX = 200;
+  var trianguloY = 300;
   var triangleSize = 40;
   var triangleSpeedX = -2;
   var triangleSpeedY = 1;
@@ -68,55 +68,55 @@ const ctx = canvas.getContext('2d');
 
       // Desenhar o círculo
       ctx.save();
-      ctx.translate(circleX, circleY);
-      ctx.rotate(circleAngle);
-      ctx.scale(circleScale, circleScale);
+      ctx.translate(circuloX, circuloY);
+      ctx.rotate(circuloAngle);
+      ctx.scale(circuloScale, circuloScale);
       ctx.beginPath();
-      ctx.arc(0, 0, circleRadius, 0, Math.PI * 2);
+      ctx.arc(0, 0, circuloRadius, 0, Math.PI * 2);
       ctx.fillStyle = "blue";
       ctx.fill();
       ctx.closePath();
       ctx.restore();
 
       // Mover o círculo
-      circleX += circleSpeedX;
-      circleY += circleSpeedY;
+      circuloX += circuloVX;
+      circuloY += circuloVY;
 
       // Verificar colisão com as bordas
-      if (circleX - circleRadius < 0 || circleX + circleRadius > canvas.width) {
-          circleSpeedX = -circleSpeedX;
+      if (circuloX - circuloRadius < 0 || circuloX + circuloRadius > canvas.width) {
+          circuloVX = -circuloVX;
       }
-      if (circleY - circleRadius < 0 || circleY + circleRadius > canvas.height) {
-          circleSpeedY = -circleSpeedY;
+      if (circuloY - circuloRadius < 0 || circuloY + circuloRadius > canvas.height) {
+          circuloVY = -circuloVY;
       }
 
       // Desenhar o retângulo
       ctx.save();
-      ctx.translate(rectX, rectY);
-      ctx.rotate(rectAngle);
-      ctx.scale(rectScale, rectScale);
+      ctx.translate(retX, retY);
+      ctx.rotate(retAngle);
+      ctx.scale(retScale, retScale);
       ctx.beginPath();
-      ctx.rect(0, 0, rectWidth, rectHeight);
+      ctx.rect(0, 0, retWidth, retHeight);
       ctx.fillStyle = "green";
       ctx.fill();
       ctx.closePath();
       ctx.restore();
 
       // Mover o retângulo
-      rectX += rectSpeedX;
-      rectY += rectSpeedY;
+      retX += retVX;
+      retY += retVY;
 
       // Verificar colisão com as bordas
-      if (rectX < 0 || rectX + rectWidth > canvas.width) {
-          rectSpeedX = -rectSpeedX;
+      if (retX < 0 || retX + retWidth > canvas.width) {
+          retVX = -retVX;
       }
-      if (rectY < 0 || rectY + rectHeight > canvas.height) {
-          rectSpeedY = -rectSpeedY;
+      if (retY < 0 || retY + retHeight > canvas.height) {
+          retVY = -retVY;
       }
 
       // Desenhar o triângulo
       ctx.save();
-      ctx.translate(triangleX, triangleY);
+      ctx.translate(trianguloX, trianguloY);
       ctx.rotate(triangleAngle);
       ctx.scale(triangleScale, triangleScale);
       ctx.beginPath();
@@ -129,14 +129,14 @@ const ctx = canvas.getContext('2d');
       ctx.restore();
 
       // Mover o triângulo
-      triangleX += triangleSpeedX;
-      triangleY += triangleSpeedY;
+      trianguloX += triangleSpeedX;
+      trianguloY += triangleSpeedY;
 
       // Verificar colisão com as bordas
-      if (triangleX < 0 || triangleX > canvas.width) {
+      if (trianguloX < 0 || trianguloX > canvas.width) {
           triangleSpeedX = -triangleSpeedX;
       }
-      if (triangleY < 0 || triangleY > canvas.height) {
+      if (trianguloY < 0 || trianguloY > canvas.height) {
           triangleSpeedY = -triangleSpeedY;
       }
 
@@ -146,27 +146,27 @@ const ctx = canvas.getContext('2d');
 
       // Verificar colisões com as formas geométricas
       if (
-          (circleX + circleRadius > yellowSquareX &&
-          circleX - circleRadius < yellowSquareX + yellowSquareSize &&
-          circleY + circleRadius > yellowSquareY &&
-          circleY - circleRadius < yellowSquareY + yellowSquareSize) ||
-          (rectX + rectWidth > yellowSquareX &&
-          rectX < yellowSquareX + yellowSquareSize &&
-          rectY + rectHeight > yellowSquareY &&
-          rectY < yellowSquareY + yellowSquareSize) ||
-          (triangleX + triangleSize > yellowSquareX &&
-          triangleX - triangleSize < yellowSquareX + yellowSquareSize &&
-          triangleY + triangleSize > yellowSquareY &&
-          triangleY - triangleSize < yellowSquareY + yellowSquareSize)
+          (circuloX + circuloRadius > yellowSquareX &&
+          circuloX - circuloRadius < yellowSquareX + yellowSquareSize &&
+          circuloY + circuloRadius > yellowSquareY &&
+          circuloY - circuloRadius < yellowSquareY + yellowSquareSize) ||
+          (retX + retWidth > yellowSquareX &&
+          retX < yellowSquareX + yellowSquareSize &&
+          retY + retHeight > yellowSquareY &&
+          retY < yellowSquareY + yellowSquareSize) ||
+          (trianguloX + triangleSize > yellowSquareX &&
+          trianguloX - triangleSize < yellowSquareX + yellowSquareSize &&
+          trianguloY + triangleSize > yellowSquareY &&
+          trianguloY - triangleSize < yellowSquareY + yellowSquareSize)
       ) {
           alert("Você perdeu o jogo!");
           // Reiniciar a posição das formas após a colisão
-          circleX = 50;
-          circleY = 50;
-          rectX = 100;
-          rectY = 150;
-          triangleX = 200;
-          triangleY = 300;
+          circuloX = 50;
+          circuloY = 50;
+          retX = 100;
+          retY = 150;
+          trianguloX = 200;
+          trianguloY = 300;
       }
 
       requestAnimationFrame(drawShapes);
