@@ -8,25 +8,77 @@ Vamos apresentar um trabalho que a orientadora Aline passou a gente, consiste no
 * Escala
 * Transformação
 * Clipping Path
+
+### Escala
+A escala é aplicada às formas geométricas (círculo, retângulo, triângulo) usando o método `ctx.scale()`. As variáveis `circleScale`, `rectScale` e `triangleScale` controlam a escala das formas.
+
+```ruby
+javascript
+// Desenhar o círculo com escala
+ctx.save();
+ctx.translate(circleX, circleY);
+ctx.rotate(circleAngle);
+ctx.scale(circleScale, circleScale); // Escala
+ctx.beginPath();
+ctx.arc(0, 0, circleRadius, 0, Math.PI * 2);
+ctx.fillStyle = "blue";
+ctx.fill();
+ctx.closePath();
+ctx.restore();
+```
+
 ### Rotação
-`Rotate()` é um elemento para desenho 2D, ele permite justamente, a rotação de um objeto na tela. 
-Rotate apenas aceita angulo em radiano.
-O rotate usa origem da tela como ponto central.
-### Codigo
-`ctx.rotate(circleAngle);`
- * O comando de cada forma consiste nesse codigo
+   - A rotação é aplicada às formas geométricas usando o método `ctx.rotate()`. As variáveis `circleAngle`, `rectAngle` e `triangleAngle` controlam os ângulos de rotação das formas.
 
-### Translação
-`Translate()` é um codigo que adiciona as transformações de matriz, que se move em `Y` e `X`.
-### Codigo
-`ctx.translate(rectX, rectY)`
- * O codigo de cada forma consiste nesse codigo
+```ruby
+javascript
+// Desenhar o círculo com rotação
+ctx.save();
+ctx.translate(circleX, circleY);
+ctx.rotate(circleAngle); // Rotação
+ctx.scale(circleScale, circleScale);
+ctx.beginPath();
+ctx.arc(0, 0, circleRadius, 0, Math.PI * 2);
+ctx.fillStyle = "blue";
+ctx.fill();
+ctx.closePath();
+ctx.restore();
+```
 
-### Escala 
-`Scale()` é um codigo que define uma transforma redereciona um elemento 2D. Essa redireção se define pelo vetor, que pode transformar direções tanto verticais como horizontais am escalas diversas.
-Ela é especficada em 1 ou 2 valores que são `SX` e `SY`(Que são scalex e scaley)
-### Codigo 
-` ctx.scale(circleScale, circleScale);`
+### Translação (Movimento)
+   - A translação é aplicada às formas geométricas usando o método `ctx.translate()`. As variáveis `circleX`, `circleY`, `rectX`, `rectY`, `triangleX` e `triangleY` controlam as coordenadas de posição das formas.
 
-### Clipping Path
+```ruby
+javascript
+// Desenhar o círculo com translação
+ctx.save();
+ctx.translate(circleX, circleY); // Translação
+ctx.rotate(circleAngle);
+ctx.scale(circleScale, circleScale);
+ctx.beginPath();
+ctx.arc(0, 0, circleRadius, 0, Math.PI * 2);
+ctx.fillStyle = "blue";
+ctx.fill();
+ctx.closePath();
+ctx.restore();
+```
+
+### Transformação(Inclinação)
+   - A transformação de inclinação (shear) é aplicada ao retângulo usando o método `ctx.transform()`. O fator de inclinação é controlado pela variável `rectShearX`.
+
+```ruby
+javascript
+// Desenhar o retângulo com transformação de inclinação (shear)
+ctx.save();
+ctx.translate(rectX, rectY);
+ctx.rotate(rectAngle);
+ctx.scale(rectScale, rectScale);
+ctx.transform(1, rectShearX, 0, 1, 0, 0); // Transformação de inclinação
+ctx.beginPath();
+ctx.rect(0, 0, rectWidth, rectHeight);
+ctx.fillStyle = "green";
+ctx.fill();
+ctx.closePath();
+ctx.restore();
+```
 
