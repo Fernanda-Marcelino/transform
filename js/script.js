@@ -19,22 +19,22 @@ const ctx = canvas.getContext('2d');
   var retVY = -1;
   var retScale = 1;
   var retAngle = 0;
-  var rectShearX = 0.2; // Fator de inclinação
+  var retShearX = 0.2; // Fator de inclinação
 
 
   // Triângulo
   var trianguloX = 200;
   var trianguloY = 300;
-  var triangleSize = 40;
-  var triangleSpeedX = -2;
-  var triangleSpeedY = 1;
-  var triangleScale = 1;
-  var triangleAngle = 0;
+  var trianguloT = 40;
+  var trianguloVX = -2;
+  var trianguloVY = 1;
+  var trianguloScale = 1;
+  var trianguloAngle = 0;
 
   // Quadrado amarelo
-  var yellowSquareX = 400;
-  var yellowSquareY = 100;
-  var yellowSquareSize = 100;
+  var quadX = 400;
+  var quadY = 100;
+  var quadT = 100;
 
   // Variáveis de controle das teclas pressionadas
   var keys = {};
@@ -47,40 +47,40 @@ const ctx = canvas.getContext('2d');
       keys[e.key] = false;
   });
 
-  function moveYellowSquare() {
-      if (keys["w"] && yellowSquareY > 0) {
-          yellowSquareY -= 5;
+  function moveQuad() {
+      if (keys["w"] && quadY > 0) {
+          quadY -= 5;
       }
-      if (keys["s"] && yellowSquareY + yellowSquareSize < canvas.height) {
-          yellowSquareY += 5;
+      if (keys["s"] && quadY + quadT < canvas.height) {
+          quadY += 5;
       }
-      if (keys["a"] && yellowSquareX > 0) {
-          yellowSquareX -= 5;
+      if (keys["a"] && quadX > 0) {
+          quadX -= 5;
       }
-      if (keys["d"] && yellowSquareX + yellowSquareSize < canvas.width) {
-          yellowSquareX += 5;
+      if (keys["d"] && quadX + quadT < canvas.width) {
+          quadX += 5;
       }
   }
 
-  function drawShapes() {
+  function desenharFormas() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       ctx.save();
 
     //Mascara de recorte no formato circular
       ctx.beginPath();
-      ctx.arc(yellowSquareX+50, yellowSquareY+40, 250, 0, Math.PI*2);
+      ctx.arc(quadX+50, quadY+40, 250, 0, Math.PI*2);
       ctx.stroke();
       
       // Clippin path
       ctx.clip();
 
     //fundo que a mascara de recorte revela
-      ctx.fillStyle = '#000';
+      ctx.fillStyle = '#FDF092';
       ctx.fillRect(0,0,1500,900);
 
       // Chame a função para mover o quadrado amarelo
-      moveYellowSquare();
+      moveQuad();
 
       // Desenhar o círculo
       ctx.save();
@@ -111,7 +111,7 @@ const ctx = canvas.getContext('2d');
       ctx.translate(retX, retY);
       ctx.rotate(retAngle);
       ctx.scale(retScale, retScale);
-      ctx.transform(1, rectShearX, 0, 1, 0, 0); // Transformação de inclinação
+      ctx.transform(1, retShearX, 0, 1, 0, 0); // Transformação de inclinação
       ctx.beginPath();
       ctx.rect(0, 0, retWidth, retHeight);
       ctx.fillStyle = "green";
@@ -134,47 +134,47 @@ const ctx = canvas.getContext('2d');
       // Desenhar o triângulo
       ctx.save();
       ctx.translate(trianguloX, trianguloY);
-      ctx.rotate(triangleAngle);
-      ctx.scale(triangleScale, triangleScale);
+      ctx.rotate(trianguloAngle);
+      ctx.scale(trianguloScale, trianguloScale);
       ctx.beginPath();
-      ctx.moveTo(0, -triangleSize);
-      ctx.lineTo(triangleSize, triangleSize);
-      ctx.lineTo(-triangleSize, triangleSize);
+      ctx.moveTo(0, -trianguloT);
+      ctx.lineTo(trianguloT, trianguloT);
+      ctx.lineTo(-trianguloT, trianguloT);
       ctx.closePath();
       ctx.fillStyle = "red";
       ctx.fill();
       ctx.restore();
 
       // Mover o triângulo
-      trianguloX += triangleSpeedX;
-      trianguloY += triangleSpeedY;
+      trianguloX += trianguloVX;
+      trianguloY += trianguloVY;
 
       // Verificar colisão com as bordas
       if (trianguloX < 0 || trianguloX > canvas.width) {
-          triangleSpeedX = -triangleSpeedX;
+          trianguloVX = -trianguloVX;
       }
       if (trianguloY < 0 || trianguloY > canvas.height) {
-          triangleSpeedY = -triangleSpeedY;
+          trianguloVY = -trianguloVY;
       }
 
       // Desenhar o quadrado amarelo
-      ctx.fillStyle = "yellow";
-      ctx.fillRect(yellowSquareX, yellowSquareY, yellowSquareSize, yellowSquareSize);
+      ctx.fillStyle = "#581845";
+      ctx.fillRect(quadX, quadY, quadT, quadT);
 
       // Verificar colisões com as formas geométricas
       if (
-          (circuloX + circuloRadius > yellowSquareX &&
-          circuloX - circuloRadius < yellowSquareX + yellowSquareSize &&
-          circuloY + circuloRadius > yellowSquareY &&
-          circuloY - circuloRadius < yellowSquareY + yellowSquareSize) ||
-          (retX + retWidth > yellowSquareX &&
-          retX < yellowSquareX + yellowSquareSize &&
-          retY + retHeight > yellowSquareY &&
-          retY < yellowSquareY + yellowSquareSize) ||
-          (trianguloX + triangleSize > yellowSquareX &&
-          trianguloX - triangleSize < yellowSquareX + yellowSquareSize &&
-          trianguloY + triangleSize > yellowSquareY &&
-          trianguloY - triangleSize < yellowSquareY + yellowSquareSize)
+          (circuloX + circuloRadius > quadX &&
+          circuloX - circuloRadius < quadX + quadT &&
+          circuloY + circuloRadius > quadY &&
+          circuloY - circuloRadius < quadY + quadT) ||
+          (retX + retWidth > quadX &&
+          retX < quadX + quadT &&
+          retY + retHeight > quadY &&
+          retY < quadY + quadT) ||
+          (trianguloX + trianguloT > quadX &&
+          trianguloX - trianguloT < quadX + quadT &&
+          trianguloY + trianguloT > quadY &&
+          trianguloY - trianguloT < quadY + quadT)
       ) {
           alert("Você perdeu o jogo!");
           // Reiniciar a posição das formas após a colisão
@@ -187,7 +187,7 @@ const ctx = canvas.getContext('2d');
       }
       ctx.restore();
 
-      requestAnimationFrame(drawShapes);
+      requestAnimationFrame(desenharFormas);
   }
 
-  drawShapes();
+  desenharFormas();
