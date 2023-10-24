@@ -11,7 +11,7 @@ Vamos apresentar um trabalho que a orientadora Aline passou a gente, consiste no
 * Transformação
 * Clipping Path
 
-<img src="git.jpg"/>
+<img src= git.jpg/>
 
 ### Escala
 A escala é aplicada às formas geométricas (círculo, retângulo, triângulo) usando o método `ctx.scale()`. As variáveis `circuloeScale`, `retScale` e `trianguloScale` controlam a escala das formas.
