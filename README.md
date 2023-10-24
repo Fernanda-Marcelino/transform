@@ -34,9 +34,9 @@ ctx.restore();
 javascript
 // Desenhar o círculo com rotação
 ctx.save();
-ctx.translate(circuloX, circleY);
+ctx.translate(circuloX, circuloY);
 ctx.rotate(circuloAngle); // Rotação
-ctx.scale(circleScale, circulpScale);
+ctx.scale(circuloScale, circuloScale);
 ctx.beginPath();
 ctx.arc(0, 0, circuloRadius, 0, Math.PI * 2);
 ctx.fillStyle = "blue";
@@ -70,15 +70,17 @@ ctx.restore();
 javascript
 // Desenhar o retângulo com transformação de inclinação (shear)
 ctx.save();
-ctx.translate(rectX, rectY);
-ctx.rotate(rectAngle);
-ctx.scale(rectScale, rectScale);
-ctx.transform(1, rectShearX, 0, 1, 0, 0); // Transformação de inclinação
+ctx.translate(retX, retY);
+ctx.rotate(retAngle);
+ctx.scale(retScale, retScale);
+ctx.transform(1, retShearX, 0, 1, 0, 0); // Transformação de inclinação
 ctx.beginPath();
-ctx.rect(0, 0, rectWidth, rectHeight);
+ctx.rect(0, 0, retWidth, retHeight);
 ctx.fillStyle = "green";
 ctx.fill();
 ctx.closePath();
 ctx.restore();
 ```
+### Clipping Path
 
+Clipping path é usado neste código para criar uma máscara de recorte circular que limita a visibilidade de um retângulo amarelo. A área dentro do círculo definido pelo clipping path permite que o retângulo seja desenhado, enquanto a área fora do círculo é "recortada" e não é visível. Isso cria um efeito de máscara de recorte, onde o retângulo amarelo é visível apenas dentro da área circular do `clipping path`.
