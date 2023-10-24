@@ -16,7 +16,7 @@ A escala é aplicada às formas geométricas (círculo, retângulo, triângulo) 
 javascript
 // Desenhar o círculo com escala
 ctx.save();
-ctx.translate(circleX, circleY);
+ctx.translate(circuloX, circuloY);
 ctx.rotate(circleAngle);
 ctx.scale(circleScale, circleScale); // Escala
 ctx.beginPath();
