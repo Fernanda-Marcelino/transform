@@ -19,6 +19,8 @@ const ctx = canvas.getContext('2d');
   var retVY = -1;
   var retScale = 1;
   var retAngle = 0;
+  var rectShearX = 0.2; // Fator de inclinação
+
 
   // Triângulo
   var trianguloX = 200;
@@ -63,6 +65,20 @@ const ctx = canvas.getContext('2d');
   function drawShapes() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+      ctx.save();
+
+    //Mascara de recorte no formato circular
+      ctx.beginPath();
+      ctx.arc(yellowSquareX+50, yellowSquareY+40, 250, 0, Math.PI*2);
+      ctx.stroke();
+      
+      // Clippin path
+      ctx.clip();
+
+    //fundo que a mascara de recorte revela
+      ctx.fillStyle = '#000';
+      ctx.fillRect(0,0,1500,900);
+
       // Chame a função para mover o quadrado amarelo
       moveYellowSquare();
 
@@ -95,6 +111,7 @@ const ctx = canvas.getContext('2d');
       ctx.translate(retX, retY);
       ctx.rotate(retAngle);
       ctx.scale(retScale, retScale);
+      ctx.transform(1, rectShearX, 0, 1, 0, 0); // Transformação de inclinação
       ctx.beginPath();
       ctx.rect(0, 0, retWidth, retHeight);
       ctx.fillStyle = "green";
@@ -168,6 +185,7 @@ const ctx = canvas.getContext('2d');
           trianguloX = 200;
           trianguloY = 300;
       }
+      ctx.restore();
 
       requestAnimationFrame(drawShapes);
   }
