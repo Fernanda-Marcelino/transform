@@ -11,6 +11,13 @@ Vamos apresentar um trabalho que a orientadora Aline passou a gente, consiste no
 * Transformação
 * Clipping Path
 
+## Salvamento Do Repositório 
+- git init
+- git  remote add origin https://github.com/Fernanda-Marcelino/transform.git
+- git pull --allow-unrelated-histories git init
+git  remote add origin https://github.com/Fernanda-Marcelino/transform.git
+- git checkout -b main
+- git add .
 
 ### Escala
 A escala é aplicada às formas geométricas (círculo, retângulo, triângulo) usando o método `ctx.scale()`. As variáveis `circuloeScale`, `retScale` e `trianguloScale` controlam a escala das formas.
