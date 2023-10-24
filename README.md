@@ -10,7 +10,7 @@ Vamos apresentar um trabalho que a orientadora Aline passou a gente, consiste no
 * Clipping Path
 
 ### Escala
-A escala é aplicada às formas geométricas (círculo, retângulo, triângulo) usando o método `ctx.scale()`. As variáveis `circleScale`, `rectScale` e `triangleScale` controlam a escala das formas.
+A escala é aplicada às formas geométricas (círculo, retângulo, triângulo) usando o método `ctx.scale()`. As variáveis `circuloeScale`, `retScale` e `trianguloScale` controlam a escala das formas.
 
 ```ruby
 javascript
@@ -28,7 +28,7 @@ ctx.restore();
 ```
 
 ### Rotação
-   - A rotação é aplicada às formas geométricas usando o método `ctx.rotate()`. As variáveis `circleAngle`, `rectAngle` e `triangleAngle` controlam os ângulos de rotação das formas.
+   - A rotação é aplicada às formas geométricas usando o método `ctx.rotate()`. As variáveis `circuloAngle`, `retAngle` e `trianguloAngle` controlam os ângulos de rotação das formas.
 
 ```ruby
 javascript
@@ -46,7 +46,7 @@ ctx.restore();
 ```
 
 ### Translação (Movimento)
-   - A translação é aplicada às formas geométricas usando o método `ctx.translate()`. As variáveis `circleX`, `circleY`, `rectX`, `rectY`, `triangleX` e `triangleY` controlam as coordenadas de posição das formas.
+   - A translação é aplicada às formas geométricas usando o método `ctx.translate()`. As variáveis `circuloX`, `circuloY`, `retX`, `retY`, `trianguloX` e `trianguloY` controlam as coordenadas de posição das formas.
 
 ```ruby
 javascript
@@ -64,7 +64,7 @@ ctx.restore();
 ```
 
 ### Transformação(Inclinação)
-   - A transformação de inclinação (shear) é aplicada ao retângulo usando o método `ctx.transform()`. O fator de inclinação é controlado pela variável `rectShearX`.
+   - A transformação de inclinação (shear) é aplicada ao retângulo usando o método `ctx.transform()`. O fator de inclinação é controlado pela variável `retShearX`.
 
 ```ruby
 javascript
