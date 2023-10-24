@@ -91,3 +91,6 @@ Clipping path é usado neste código para criar uma máscara de recorte circular
 
 https://github.com/Fernanda-Marcelino/transform/assets/128320607/42513276-3af0-41d2-966e-23a91f1dca24
 
+
+
+![Captura de tela 2023-10-23 214031](https://github.com/Fernanda-Marcelino/transform/assets/128320607/08e8c2e8-9639-46e8-bfc8-bbe9593dfa82)
