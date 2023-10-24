@@ -87,3 +87,7 @@ ctx.restore();
 ### Clipping Path
 
 Clipping path é usado neste código para criar uma máscara de recorte circular que limita a visibilidade de um retângulo amarelo. A área dentro do círculo definido pelo clipping path permite que o retângulo seja desenhado, enquanto a área fora do círculo é "recortada" e não é visível. Isso cria um efeito de máscara de recorte, onde o retângulo amarelo é visível apenas dentro da área circular do `clipping path`.
+
+
+https://github.com/Fernanda-Marcelino/transform/assets/128320607/42513276-3af0-41d2-966e-23a91f1dca24
+
