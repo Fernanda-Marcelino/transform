@@ -17,10 +17,10 @@ javascript
 // Desenhar o círculo com escala
 ctx.save();
 ctx.translate(circuloX, circuloY);
-ctx.rotate(circleAngle);
-ctx.scale(circleScale, circleScale); // Escala
+ctx.rotate(circuloAngle);
+ctx.scale(circuloScale, circuloScale); // Escala
 ctx.beginPath();
-ctx.arc(0, 0, circleRadius, 0, Math.PI * 2);
+ctx.arc(0, 0, circuloRadius, 0, Math.PI * 2);
 ctx.fillStyle = "blue";
 ctx.fill();
 ctx.closePath();
@@ -34,11 +34,11 @@ ctx.restore();
 javascript
 // Desenhar o círculo com rotação
 ctx.save();
-ctx.translate(circleX, circleY);
-ctx.rotate(circleAngle); // Rotação
-ctx.scale(circleScale, circleScale);
+ctx.translate(circuloX, circleY);
+ctx.rotate(circuloAngle); // Rotação
+ctx.scale(circleScale, circulpScale);
 ctx.beginPath();
-ctx.arc(0, 0, circleRadius, 0, Math.PI * 2);
+ctx.arc(0, 0, circuloRadius, 0, Math.PI * 2);
 ctx.fillStyle = "blue";
 ctx.fill();
 ctx.closePath();
@@ -52,11 +52,11 @@ ctx.restore();
 javascript
 // Desenhar o círculo com translação
 ctx.save();
-ctx.translate(circleX, circleY); // Translação
-ctx.rotate(circleAngle);
-ctx.scale(circleScale, circleScale);
+ctx.translate(circuloX, circuloY); // Translação
+ctx.rotate(circuloAngle);
+ctx.scale(circuloScale, circuloScale);
 ctx.beginPath();
-ctx.arc(0, 0, circleRadius, 0, Math.PI * 2);
+ctx.arc(0, 0, circuloRadius, 0, Math.PI * 2);
 ctx.fillStyle = "blue";
 ctx.fill();
 ctx.closePath();
