@@ -18,6 +18,8 @@ Vamos apresentar um trabalho que a orientadora Aline passou a gente, consiste no
 git  remote add origin https://github.com/Fernanda-Marcelino/transform.git
 - git checkout -b main
 - git add .
+  
+![Captura de tela 2023-10-23 214031](https://github.com/Fernanda-Marcelino/transform/assets/128320607/08e8c2e8-9639-46e8-bfc8-bbe9593dfa82)
 
 ### Escala
 A escala é aplicada às formas geométricas (círculo, retângulo, triângulo) usando o método `ctx.scale()`. As variáveis `circuloeScale`, `retScale` e `trianguloScale` controlam a escala das formas.
@@ -95,9 +97,9 @@ ctx.restore();
 
 Clipping path é usado neste código para criar uma máscara de recorte circular que limita a visibilidade de um retângulo amarelo. A área dentro do círculo definido pelo clipping path permite que o retângulo seja desenhado, enquanto a área fora do círculo é "recortada" e não é visível. Isso cria um efeito de máscara de recorte, onde o retângulo amarelo é visível apenas dentro da área circular do `clipping path`.
 
+## Funcionamento Do Jogo
 
 https://github.com/Fernanda-Marcelino/transform/assets/128320607/42513276-3af0-41d2-966e-23a91f1dca24
 
 
 
-![Captura de tela 2023-10-23 214031](https://github.com/Fernanda-Marcelino/transform/assets/128320607/08e8c2e8-9639-46e8-bfc8-bbe9593dfa82)
