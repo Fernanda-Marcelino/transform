@@ -21,6 +21,9 @@ git  remote add origin https://github.com/Fernanda-Marcelino/transform.git
   
 ![Captura de tela 2023-10-23 214031](https://github.com/Fernanda-Marcelino/transform/assets/128320607/08e8c2e8-9639-46e8-bfc8-bbe9593dfa82)
 
+## Diagrama De Classes
+![Captura de tela 2023-10-24 100515](https://github.com/Fernanda-Marcelino/transform/assets/128982469/87b16d5e-6013-4362-88d6-55a364cda914)
+
 ### Escala
 A escala é aplicada às formas geométricas (círculo, retângulo, triângulo) usando o método `ctx.scale()`. As variáveis `circuloeScale`, `retScale` e `trianguloScale` controlam a escala das formas.
 
@@ -50,6 +53,7 @@ ctx.translate(circuloX, circuloY);
 ctx.rotate(circuloAngle); // Rotação
 ctx.scale(circuloScale, circuloScale);
 ctx.beginPath();
+![Captura de tela 2023-10-24 100515](https://github.com/Fernanda-Marcelino/transform/assets/128982469/1bba8746-b4dc-4ad9-b82f-8c343cd36451)
 ctx.arc(0, 0, circuloRadius, 0, Math.PI * 2);
 ctx.fillStyle = "blue";
 ctx.fill();
@@ -78,6 +82,7 @@ ctx.restore();
 ### Transformação(Inclinação)
    - A transformação de inclinação (shear) é aplicada ao retângulo usando o método `ctx.transform()`. O fator de inclinação é controlado pela variável `retShearX`.
 
+
 ```ruby
 javascript
 // Desenhar o retângulo com transformação de inclinação (shear)
@@ -100,6 +105,5 @@ Clipping path é usado neste código para criar uma máscara de recorte circular
 ## Funcionamento Do Jogo
 
 https://github.com/Fernanda-Marcelino/transform/assets/128320607/42513276-3af0-41d2-966e-23a91f1dca24
-
 
 
